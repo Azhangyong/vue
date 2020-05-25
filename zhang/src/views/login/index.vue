@@ -13,6 +13,7 @@
         <div @click="newLogin()" class="logBut"><span>Go</span></div>
       </div>
     </div>
+    <div class="main"><div class="wave"></div></div>
   </div>
 </template>
 <script>
@@ -88,5 +89,39 @@ export default {
   text-align: center;
   text-decoration: underline;
   color: #fff;
+}
+.main,.wave{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.main{
+  border: 3px solid blue;
+  padding: 10px;
+}
+.wave{
+  background: darkcyan;
+  overflow: hidden;
+}
+.wave::after{
+content: "";
+width: 300px;
+height: 300px;
+background: rgba(255,255,255,0.8);
+position: absolute;
+left: 50%;
+top: 0;
+transform: translate(-50%,-60%);
+border-radius:40% ;
+animation:wave 5s linear infinite;
+}
+@keyframes wave{
+  100%{
+    transform: translate(-50%,-60%) rotate(360deg);
+  }
 }
 </style>
