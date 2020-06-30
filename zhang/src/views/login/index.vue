@@ -7,47 +7,108 @@
             :type="item.type"
             :placeholder="item.text"
             v-model="item.value"
+            @blur="item.text == '密码' ? onChange($event) : ''"
           />
           <div class="input-img"><img :src="item.img" alt="" /></div>
         </div>
-        <div @click="newLogin()" class="logBut"><span>Go</span></div>
+        <div @click="newLogin()" class="logBut">
+          <span>Go</span>
+        </div>
       </div>
     </div>
-    <div class="main"><div class="wave"></div></div>
+    <div
+      class="main"
+      v-show="error"
+      :style="{ opacity: opacity == true ? '1' : '0' }"
+    >
+      <div class="wave"></div>
+      <div class="tips">{{ tips }}</div>
+    </div>
   </div>
 </template>
 <script>
+import {
+  reactive,
+  ref,
+  isRef,
+  toRefs,
+  onBeforeMount,
+  onMounted
+} from '@vue/composition-api'
+import { stripscript, loginPass } from '@/api/login'
 export default {
   name: 'login',
-  data () {
-    return {
-      login: [
-        {
-          text: '账户',
-          type: 'text',
-          img: require('../../assets/images/login.png'),
-          value: ''
-        },
-        {
-          text: '密码',
-          type: 'password',
-          img: require('../../assets/images/password.png'),
-          value: ''
-        }
-      ],
-      show: [false, '']
-    }
-  },
-  methods: {
-    newLogin () {
-      for (let i in this.$data.login) {
-        if (this.$data.login[i].value == '') {
-          this.$data.show[1] = this.$data.login[i].text
-          this.$data.show[0] = true
-          console.log(this.$data.show)
-          return
-        }
+  setup (props, context) {
+    const login = reactive([
+      {
+        text: '账户',
+        type: 'text',
+        img: require('../../assets/images/login.png'),
+        value: ''
+      },
+      {
+        text: '密码',
+        type: 'password',
+        img: require('../../assets/images/password.png'),
+        value: ''
       }
+    ])
+    const tips = ref('密码或账号错误')
+    const error = ref(false)
+    const opacity = ref(false)
+    const onChange = () => {
+      //input 失焦事件
+      // let num = stripscript(login[1].value)
+      // if (num != login[1].value) {
+      //   login[1].value = ''
+      //   tips.value = '密码格式有误'
+      //   hidden()
+      //   return
+      // }
+      let type = loginPass(login[1].value)
+      if (type == false) {
+        login[1].value = ''
+        tips.value = '密码格式有误'
+        hidden()
+        return
+      }
+    }
+    //声明方法
+    const newLogin = () => {
+      //点击登录
+      // for (let i in login) {
+      //   if (login[i].value == '') {
+      //     hidden()
+      //     return
+      //   }
+      // }
+      console.log(this)
+      // this.$router.push({ name:'HomePage', params: { userId: 123 }})
+    }
+    const hidden = () => {
+      //提示弹出隐藏
+      error.value = true
+      setTimeout(function () {
+        opacity.value = true
+        setTimeout(function () {
+          opacity.value = false
+          setTimeout(function () {
+            error.value = false
+          }, 300)
+        }, 1000)
+      }, 300)
+    }
+    //挂载完成后
+    onMounted(() => {})
+    return {
+      //数据必须return 出去 才会生效
+      login,
+      tips,
+      error,
+      opacity,
+      newLogin,
+      hidden,
+      onChange
     }
   }
 }
@@ -89,39 +150,50 @@ export default {
   text-align: center;
   text-decoration: underline;
   color: #fff;
+  cursor: pointer;
 }
-.main,.wave{
+.main,
+.wave {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-.main{
-  border: 3px solid blue;
+.main {
+  border: 3px solid #4d3667;
   padding: 10px;
+  transition: all 0.3s ease;
 }
-.wave{
-  background: darkcyan;
+.wave {
+  background: #4d3667;
   overflow: hidden;
 }
-.wave::after{
-content: "";
-width: 300px;
-height: 300px;
-background: rgba(255,255,255,0.8);
-position: absolute;
-left: 50%;
-top: 0;
-transform: translate(-50%,-60%);
-border-radius:40% ;
-animation:wave 5s linear infinite;
+.wave::after {
+  content: '';
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -60%);
+  border-radius: 40%;
+  animation: wave 5s linear infinite;
 }
-@keyframes wave{
-  100%{
-    transform: translate(-50%,-60%) rotate(360deg);
+@keyframes wave {
+  100% {
+    transform: translate(-50%, -60%) rotate(360deg);
   }
+}
+.tips {
+  position: absolute;
+  top: 68px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 15px;
+  color: #ff6020;
 }
 </style>
