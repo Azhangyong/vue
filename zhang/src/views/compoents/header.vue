@@ -14,7 +14,7 @@ import {
 } from '@vue/composition-api'
 
 export default {
-  name: 'homePage',
+  name: 'header',
   setup (props, context) {
     //挂载完成后
     onMounted(() => {})

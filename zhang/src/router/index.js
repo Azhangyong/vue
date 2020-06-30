@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 const routes = [{
         path: "/",
-        redirect: "Login" //路由重定向
+        redirect: "HomePage" //路由重定向
     },
     {
         path: "/login",
