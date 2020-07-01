@@ -1,6 +1,6 @@
 <template>
-  <div id="homePage">
-
+  <div id="header">
+    1456
   </div>
 </template>
 <script>

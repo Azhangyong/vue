@@ -36,6 +36,7 @@ import {
   onMounted
 } from '@vue/composition-api'
 import { stripscript, loginPass } from '@/api/login'
+import { requestData } from '@/utils/common'
 export default {
   name: 'login',
   setup (props, context) {
@@ -74,7 +75,7 @@ export default {
       }
     }
     //声明方法
-    const newLogin = () => {
+    const newLogin = function () {
       //点击登录
       // for (let i in login) {
       //   if (login[i].value == '') {
@@ -82,8 +83,9 @@ export default {
       //     return
       //   }
       // }
-      console.log(this)
-      // this.$router.push({ name:'HomePage', params: { userId: 123 }})
+      // let t = requestData('post', '/54455454', { a: 123 })
+      this.$router.push({ name: 'HomePage', params: { userId: 123 } })
+
     }
     const hidden = () => {
       //提示弹出隐藏
