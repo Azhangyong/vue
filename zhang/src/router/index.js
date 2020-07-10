@@ -5,19 +5,40 @@ Vue.use(VueRouter);
 
 const routes = [{
         path: "/",
-        redirect: "Login" //路由重定向
+        redirect: "Login", //路由重定向
+        hiddle: true,
+        meta: {
+            name: "主页"
+        }
     },
     {
         path: "/login",
         name: "Login",
+        hiddle: true,
+        meta: {
+            name: "登录"
+        },
         component: () =>
             import ("../views/login/index.vue")
     },
     {
         path: "/homePage",
         name: "HomePage",
+        redirect: "index",
+        meta: {
+            name: "控制台"
+        },
         component: () =>
-            import ("../views/homepage/index.vue")
+            import ("../views/layout/index.vue"),
+        children: [{
+            path: "/index",
+            name: "Index",
+            meta: {
+                name: "首页"
+            },
+            component: () =>
+                import ("../views/homepage/index.vue")
+        }]
     }
 ];
 
