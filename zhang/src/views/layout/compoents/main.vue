@@ -1,7 +1,5 @@
 <template>
-  <div id="mains">
-    123
-  </div>
+  <div id="mains"></div>
 </template>
 <script>
 import {
@@ -11,16 +9,16 @@ import {
   toRefs,
   onBeforeMount,
   onMounted
-} from '@vue/composition-api'
+} from "@vue/composition-api";
 
 export default {
-  name: 'mains',
-  setup (props, context) {
+  name: "mains",
+  setup(props, context) {
     //挂载完成后
-    onMounted(() => {})
-    return {}
+    onMounted(() => {});
+    return {};
   }
-}
+};
 </script>
 <style scoped>
 #mains {

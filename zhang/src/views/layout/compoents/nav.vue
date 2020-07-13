@@ -10,9 +10,10 @@
           active-text-color="#fff"
           background-color="transparent"
           text-color="#fff"
+          router
         >
           <template v-for="(item, index) in routers">
-            <el-submenu :key="item.id" :index="index" v-if="!item.hiddle">
+            <el-submenu :key="item.id" :index="index+''" v-if="!item.hiddle">
               <!-- 一级菜单 -->
               <template slot="title">
                 <i class="el-icon-location"></i>
@@ -21,9 +22,9 @@
               <!-- 子级菜单 -->
               <el-menu-item-group>
                 <el-menu-item
-                  v-for="(subItem, index) in item.children"
+                  v-for="subItem in item.children"
                   :key="subItem.id"
-                  :index="index"
+                  :index="subItem.path"
                   >{{ subItem.meta.name }}</el-menu-item
                 >
               </el-menu-item-group>
@@ -49,6 +50,7 @@ export default {
   setup (props, { root }) {
     // 数据
     const routers = reactive(root.$router.options.routes)
+    console.log(routers)
     //
     // 函数
     //
