@@ -37,6 +37,7 @@ import {
 } from '@vue/composition-api'
 import { stripscript, loginPass } from '@/api/login'
 import { requestData } from '@/utils/common'
+import md5 from 'js-md5'
 export default {
   name: 'login',
   setup (props, context) {
@@ -84,6 +85,9 @@ export default {
       //   }
       // }
       // let t = requestData('post', '/54455454', { a: 123 })
+      // console.log(123)
+      // console.log(this.$md5(446))
+      // console.log(md5("235"))//md5 加密
       this.$router.push({ name: 'HomePage', params: { userId: 123 } })
 
     }

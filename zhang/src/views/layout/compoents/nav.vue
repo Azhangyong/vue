@@ -33,6 +33,7 @@
         </el-menu>
       </el-col>
     </el-row>
+    <svg-icon />
   </div>
 </template>
 <script>
@@ -71,7 +72,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 #navs {
   position: fixed;
   width: 250px;
@@ -80,4 +81,5 @@ export default {
   left: 0;
   background: #344a5f;
 }
+
 </style>

@@ -1,5 +1,7 @@
 <template>
-  <div id="mains"></div>
+  <div id="mains">
+    <router-view />
+  </div>
 </template>
 <script>
 import {
@@ -9,16 +11,16 @@ import {
   toRefs,
   onBeforeMount,
   onMounted
-} from "@vue/composition-api";
+} from '@vue/composition-api'
 
 export default {
-  name: "mains",
-  setup(props, context) {
+  name: 'mains',
+  setup (props, context) {
     //挂载完成后
-    onMounted(() => {});
-    return {};
+    onMounted(() => {})
+    return {}
   }
-};
+}
 </script>
 <style scoped>
 #mains {

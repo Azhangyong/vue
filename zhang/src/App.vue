@@ -6,7 +6,6 @@
 
 <style >
 @import '../node_modules/element-ui/lib/theme-chalk/index.css';
-@import '../src/styles/reset.css';
 #app {
   font-family: Microsoft;
 }
