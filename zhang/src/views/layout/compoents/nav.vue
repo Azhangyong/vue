@@ -16,7 +16,7 @@
             <el-submenu :key="item.id" :index="index+''" v-if="!item.hiddle">
               <!-- 一级菜单 -->
               <template slot="title">
-                <i class="el-icon-location"></i>
+                <i :class="item.meta.icon"></i>
                 <span>{{ item.meta.name }}</span>
               </template>
               <!-- 子级菜单 -->

@@ -28,7 +28,8 @@ const routes = [{
         name: "HomePage",
         redirect: "index", //路由重定向
         meta: {
-            name: "控制台"
+            name: "控制台",
+            icon: "el-icon-s-help"
         },
         component: layout,
         children: [{
@@ -45,7 +46,8 @@ const routes = [{
         path: "/info",
         name: "Info",
         meta: {
-            name: "信息管理"
+            name: "信息管理",
+            icon: "el-icon-help"
         },
         component: layout,
         children: [{
@@ -73,7 +75,8 @@ const routes = [{
         path: "/user",
         name: "User",
         meta: {
-            name: "用户管理"
+            name: "用户管理",
+            icon: "el-icon-picture"
         },
         component: layout,
         children: [{
