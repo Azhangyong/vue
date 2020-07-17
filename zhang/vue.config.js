@@ -11,7 +11,15 @@ module.exports = {
      * webpack配置,see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
      **/
     chainWebpack: (config) => {
-        // 修复HMR
+        const svgRule = config.module.rule("svg")
+        svgRule.uses.clear();
+        svgRule.use("svg-sprite-loader")
+            .loader("svg-sprite-loader")
+            .options({
+                symbolId: "icon-[name]",
+                include: ["./src/icons"]
+            })
+            // 修复HMR
         config.resolve.symlinks(true)
         const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
         types.forEach(type => addStyleResource(config.module.rule('stylus').oneOf(type)))

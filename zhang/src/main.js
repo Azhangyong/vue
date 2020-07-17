@@ -6,10 +6,9 @@ import ElementUI from 'element-ui';
 import App from './App.vue'
 import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
-//自定义全局组件
-Vue.component('svg-icon', {
-    template: '<div>123</div>'
-})
+//全局组件
+import "./icons/index.js"
+
 Vue.use(ElementUI);
 Vue.use(VueCompositionApi);
 Vue.config.productionTip = false

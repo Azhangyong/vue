@@ -33,7 +33,7 @@
         </el-menu>
       </el-col>
     </el-row>
-    <svg-icon />
+    <svg-icon iconClass="menu"  className="menu font12"/>
   </div>
 </template>
 <script>
