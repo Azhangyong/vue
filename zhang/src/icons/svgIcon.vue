@@ -22,13 +22,14 @@ export default {
   props: {
     iconClass: {
       type: String, //类型
-      default: '', //如果没值 默认值
+      // default: '', //如果没值 默认值
       //default:()=>[] 对象或数组
-      required: true, //必填
-      validator: value => {
-        //验证数据 可以在内部做操作
-        return value
-      }
+      required: true //必填
+      // validator: value => {
+      //   //验证数据 可以在内部做操作
+      //   console.log(value)
+      //   return value
+      // }
     },
     className: {
       type: String,
@@ -36,6 +37,7 @@ export default {
     }
   },
   setup (props) {
+    console.log(props)
     /**
     computed 监听属性变化，并计算属性
      */
@@ -47,6 +49,7 @@ export default {
         return `svg-icon`
       }
     })
+    console.log(svgClass.value, iconName.value)
     return {
       iconName,
       svgClass
@@ -58,10 +61,7 @@ export default {
 .svg-icon {
   width: 1em;
   height: 1em;
+
   fill: currentColor;
-  color: #fff;
-  &.font12 {
-    font-size: 12px;
-  }
 }
 </style>

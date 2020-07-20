@@ -21,3 +21,7 @@ li.el-submenu {
         background: rgba(255, 96, 32, 1) !important;
     }
 }
+
+.el-submenu__title * {
+    display: initial;
+}

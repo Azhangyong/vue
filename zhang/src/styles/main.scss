@@ -1,2 +1,9 @@
 @import "./config.scss";
 @import "./elementUi.scss";
+@import "./svg.scss";
+.pull-left {
+    float: left;
+}
+.pull-right{
+    float:right
+}

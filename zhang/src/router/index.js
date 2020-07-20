@@ -29,7 +29,7 @@ const routes = [{
         redirect: "index", //路由重定向
         meta: {
             name: "控制台",
-            icon: "el-icon-s-help"
+            icon: "console"
         },
         component: layout,
         children: [{
@@ -47,7 +47,7 @@ const routes = [{
         name: "Info",
         meta: {
             name: "信息管理",
-            icon: "el-icon-help"
+            icon: "info"
         },
         component: layout,
         children: [{
@@ -76,7 +76,7 @@ const routes = [{
         name: "User",
         meta: {
             name: "用户管理",
-            icon: "el-icon-picture"
+            icon: "user"
         },
         component: layout,
         children: [{
