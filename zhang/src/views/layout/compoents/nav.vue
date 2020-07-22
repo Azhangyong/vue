@@ -1,22 +1,27 @@
 <template>
   <div id="navs">
+    <div class="use-img">
+      <img src="../../../assets/images/login.png" alt="" />
+    </div>
     <el-row class="tac">
       <el-col :span="12">
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
+          :collapse="isCollapse"
           active-text-color="#fff"
           background-color="transparent"
           text-color="#fff"
           router
         >
           <template v-for="(item, index) in routers">
-            <el-submenu :key="item.id" :index="index+''" v-if="!item.hiddle">
+            <el-submenu :key="item.id" :index="index + ''" v-if="!item.hiddle">
               <!-- 一级菜单 -->
               <template slot="title">
-               <svg-icon :iconClass="item.meta.icon" :className="item.meta.icon" />
+                <svg-icon
+                  :iconClass="item.meta.icon"
+                  :className="item.meta.icon"
+                />
                 <span slot="title">{{ item.meta.name }}</span>
               </template>
               <!-- 子级菜单 -->
@@ -33,7 +38,6 @@
         </el-menu>
       </el-col>
     </el-row>
-    
   </div>
 </template>
 <script>
@@ -43,48 +47,74 @@ import {
   isRef,
   toRefs,
   onBeforeMount,
-  onMounted
+  onMounted,
+  computed
 } from '@vue/composition-api'
 
 export default {
   name: 'navs',
   setup (props, { root }) {
-    // 数据
+    /**
+    data数据
+     */
+    // const isCollapse = ref(false)
+    // 从router 里拿出来数据
     const routers = reactive(root.$router.options.routes)
-    console.log(routers)
+    /**
+     ***computed监听
+     */
+    const isCollapse = computed(() => root.$store.state.isCollapse)
     //
     // 函数
     //
-    const handleOpen = (key, keyPath) => {
-      console.log(key, keyPath)
-    }
-    const handleClose = (key, keyPath) => {
-      console.log(key, keyPath)
-    }
+
+    //打印store 数据
+    // console.log(root.$store.state.isCollapse)
     //挂载完成后
     onMounted(() => {})
     return {
-      handleOpen,
-      handleClose,
-      routers
+      routers,
+      isCollapse
     }
   }
 }
 </script>
 
-<style  lang="scss"  >
-@import "../../../styles/config";
+<style lang="scss">
+@import '../../../styles/config';
 #navs {
   position: fixed;
-  width: $navMenu;
+
   height: 100vh;
   top: 0;
   left: 0;
   background: #344a5f;
-  svg{
+  svg {
     font-size: 20px;
     margin-right: 10px;
-  } 
+  }
 }
-
+.use-img {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: block;
+  }
+}
+.open {
+  #navs {
+    width: $navMenu;
+  }
+}
+.close {
+  #navs {
+    width:64px;
+  }
+}
 </style>

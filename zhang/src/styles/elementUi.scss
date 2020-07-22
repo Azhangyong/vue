@@ -25,3 +25,7 @@ li.el-submenu {
 .el-submenu__title * {
     display: initial;
 }
+
+.el-menu {
+    border-right: none !important;
+}

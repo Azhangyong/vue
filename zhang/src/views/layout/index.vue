@@ -1,5 +1,5 @@
 <template>
-  <div id="layout">
+  <div id="layout" :class="[menuStatus?'close':'open']">
     <Header />
     <Nav />
     <Main />
@@ -12,7 +12,8 @@ import {
   isRef,
   toRefs,
   onBeforeMount,
-  onMounted
+  onMounted,
+  computed
 } from '@vue/composition-api'
 import Header from './compoents/header'
 import Main from './compoents/main'
@@ -24,15 +25,16 @@ export default {
     Main,
     Nav
   },
-  setup (props, context) {
+  setup (props, {root}) {
+    const menuStatus = computed(() => root.$store.state.isCollapse)
     //挂载完成后
     onMounted(() => {})
-    return {}
+    return { menuStatus }
   }
 }
 </script>
 <style scoped>
 #layout {
-    background: #f7f7f7;
+  background: #f7f7f7;
 }
 </style>

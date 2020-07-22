@@ -1,6 +1,6 @@
 <template>
   <div id="headers">
-    <div class="pull-left header-icon">
+    <div class="pull-left header-icon" @click="navMenuState">
       <svg-icon iconClass="meun" className="meun"></svg-icon>
     </div>
     <div class="pull-right">
@@ -28,20 +28,27 @@ import {
 
 export default {
   name: 'headers',
-  setup (props, context) {
+  setup (props, {root}) {
+    /**
+    事件
+     */
+    const navMenuState = () => {
+      root.$store.commit('SET_COLLAPSE')
+    }
     //挂载完成后
     onMounted(() => {})
-    return {}
+    return { navMenuState }
   }
 }
 </script>
 <style lang="scss">
+@import '../../../styles/config';
 #headers {
   position: fixed;
   top: 0;
   left: 250px;
   right: 0;
-  height: 75px;
+  height: $layoutHeader;
   background: #fff;
   -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
   line-height: 75px;
@@ -69,7 +76,7 @@ export default {
   > img {
     width: 50px;
     height: 50px;
-   vertical-align: middle;
+    vertical-align: middle;
     background: black;
     border-radius: 25px;
   }

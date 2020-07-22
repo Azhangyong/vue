@@ -37,7 +37,6 @@ export default {
     }
   },
   setup (props) {
-    console.log(props)
     /**
     computed 监听属性变化，并计算属性
      */
@@ -49,7 +48,6 @@ export default {
         return `svg-icon`
       }
     })
-    console.log(svgClass.value, iconName.value)
     return {
       iconName,
       svgClass
@@ -61,7 +59,6 @@ export default {
 .svg-icon {
   width: 1em;
   height: 1em;
-
   fill: currentColor;
 }
 </style>

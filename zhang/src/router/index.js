@@ -2,7 +2,12 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-//引入布局组件
+
+const originalPush = VueRouter.prototype.push //解决element ui 路由报错问题
+VueRouter.prototype.push = function push(location) {
+        return originalPush.call(this, location).catch(err => err)
+    }
+    //引入布局组件
 import layout from "@/views/layout/index.vue"
 
 const routes = [{
