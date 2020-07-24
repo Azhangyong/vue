@@ -10,7 +10,7 @@
       <div class="user-info pull-left">
         管理员
       </div>
-      <div class="header-icon pull-left">
+      <div class="header-icon pull-left" @click="exit">
         <svg-icon iconClass="exit" className="exit"></svg-icon>
       </div>
     </div>
@@ -23,21 +23,29 @@ import {
   isRef,
   toRefs,
   onBeforeMount,
-  onMounted
+  onMounted,
+  computed
 } from '@vue/composition-api'
 
 export default {
   name: 'headers',
-  setup (props, {root}) {
+  setup (props, { root }) {
+    const username = computed(() => root.$store.state.app.username)
     /**
     事件
      */
     const navMenuState = () => {
-      root.$store.commit('SET_COLLAPSE')
+      root.$store.commit('app/SET_COLLAPSE')
+    }
+    const exit = () => {
+      //注销
+      root.$store.dispatch('app/exit').then(()=>{
+        root.$router.push('/login')
+      })
     }
     //挂载完成后
     onMounted(() => {})
-    return { navMenuState }
+    return { navMenuState, username, exit }
   }
 }
 </script>
@@ -46,12 +54,23 @@ export default {
 #headers {
   position: fixed;
   top: 0;
-  left: 250px;
+  left: $navMenu;
   right: 0;
   height: $layoutHeader;
   background: #fff;
-  -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
+  @include webkit(transition, all 0.3s ease); //config 里面兼容属性
+  @include webkit(box-shadow, 0 3px 16px 0 rgba(0, 0, 0, 0.1));
   line-height: 75px;
+}
+.open {
+  #headers {
+    left: $navMenu;
+  }
+}
+.close {
+  #headers {
+    left: $navMenuMin;
+  }
 }
 .header-icon {
   padding: 0 32px;

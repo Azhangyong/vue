@@ -1,5 +1,5 @@
 <template>
-  <div id="layout" :class="[menuStatus?'close':'open']">
+  <div id="layout" :class="[menuStatus ? 'close' : 'open']">
     <Header />
     <Nav />
     <Main />
@@ -25,8 +25,8 @@ export default {
     Main,
     Nav
   },
-  setup (props, {root}) {
-    const menuStatus = computed(() => root.$store.state.isCollapse)
+  setup (props, { root }) {
+    const menuStatus = computed(() => root.$store.state.app.isCollapse)
     //挂载完成后
     onMounted(() => {})
     return { menuStatus }

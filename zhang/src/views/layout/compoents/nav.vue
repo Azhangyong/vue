@@ -63,7 +63,7 @@ export default {
     /**
      ***computed监听
      */
-    const isCollapse = computed(() => root.$store.state.isCollapse)
+    const isCollapse = computed(() => root.$store.state.app.isCollapse)
     //
     // 函数
     //
@@ -84,27 +84,31 @@ export default {
 @import '../../../styles/config';
 #navs {
   position: fixed;
-
   height: 100vh;
   top: 0;
   left: 0;
   background: #344a5f;
+  @include webkit(transition, all 0.3s ease); //config 里面兼容属性
+  @include webkit(box-shadow, 0 3px 16px 0 rgba(0, 0, 0, 0.1));
   svg {
     font-size: 20px;
     margin-right: 10px;
   }
 }
+
 .use-img {
-  height: 200px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   > img {
-    width: 70px;
-    height: 70px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     display: block;
+    transition: all .3s ease;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 }
 .open {
@@ -114,7 +118,13 @@ export default {
 }
 .close {
   #navs {
-    width:64px;
+    width: $navMenuMin;
+  }
+  .use-img {
+    > img {
+      width: 70px;
+      height: 70px;
+    }
   }
 }
 </style>

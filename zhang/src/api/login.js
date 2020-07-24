@@ -22,3 +22,6 @@ export function loginCode(value) {
     let reg = /^[a-z0-9]{6}$/;
     return !reg.test(value) ? true : false
 }
+export function login(value) {
+
+}

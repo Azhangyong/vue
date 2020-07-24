@@ -88,8 +88,13 @@ export default {
       // console.log(123)
       // console.log(this.$md5(446))
       // console.log(md5("235"))//md5 加密
-      this.$router.push({ name: 'HomePage', params: { userId: 123 } })
-
+      // console.log(login)
+      // let repuestData = {
+      //   username:
+      // }
+      // root.$store.dispath('app/login', repuestData).then(res => {
+        this.$router.push({ name: 'HomePage', params: { userId: 123 } })
+      // })
     }
     const hidden = () => {
       //提示弹出隐藏
