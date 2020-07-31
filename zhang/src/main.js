@@ -7,9 +7,11 @@ import App from './App.vue'
 import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import "./router/premit.js" //路由守卫
+//全局方法
+// import golbal from './utils/global.js'
 //全局组件
 import "./icons/index.js"
-
+// Vue.use(golbal);//全局方法
 Vue.use(ElementUI);
 Vue.use(VueCompositionApi);
 Vue.config.productionTip = false

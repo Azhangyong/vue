@@ -1,3 +1,5 @@
+import { MessageBox } from 'element-ui'
+
 // 密码 过滤特殊字符
 export function stripscript(str) {
     let pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%+_]");
@@ -22,6 +24,28 @@ export function loginCode(value) {
     let reg = /^[a-z0-9]{6}$/;
     return !reg.test(value) ? true : false
 }
+//登录
 export function login(value) {
 
 }
+// export function confirm(params) {
+//     MessageBox.confirm(params.content, params.tip || '提示', {
+//             confirmButtonText: '确定',
+//             cancelButtonText: '取消',
+//             type: params.type || 'warning',
+//             center: true
+//         })
+//         .then(() => {
+//             params.fn && params.fn(params.id)
+//                 // root.message({
+//                 //     type: 'success',
+//                 //     message: '删除成功!'
+//                 // })
+//         })
+//         .catch(() => {
+//             // root.message({
+//             //     type: 'info',
+//             //     message: '已取消删除'
+//             // })
+//         })
+// }
