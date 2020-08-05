@@ -1,4 +1,4 @@
-import service from "@/utils/request"
+// import service from "@/utils/request"
 
 
 /**
@@ -18,6 +18,16 @@ import service from "@/utils/request"
  *一级 分类添加
  */
 export function addFirstCategory(data) {
+    return service.request({
+        method: "post",
+        url: "/news/addFirstCategory/",
+        data
+    })
+}
+/**
+ * 获取分类
+ */
+export function getCategory(data) {
     return service.request({
         method: "post",
         url: "/news/addFirstCategory/",
