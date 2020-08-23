@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: darkblue
+        }
+        
+        .main {
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            perspective: 800px;
+            perspective-origin: 50% 50%;
+            -webkit-perspective: 800px;
+            /* Safari 和 Chrome */
+            -webkit-perspective-origin: 50% 50%;
+            /* perspective-origin 属性定义 3D 元素所基于的 X 轴和 Y 轴。该属性允许您改变 3D 元素的底部位置。
+               当为元素定义 perspective-origin 属性时，其子元素会获得透视效果，而不是元素本身。 */
+            /* perspective 属性定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。
+          当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+                注释：perspective 属性只影响 3D 转换元素。 */
+        }
+        
+        .main i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 0 white;
+            background: rgba(255, 255, 255, .5);
+            position: absolute;
+            animation: run 3s ease-in-out infinite;
+        }
+        
+        @keyframes run {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 560px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+
+    <script>
+        let is = document.getElementsByTagName("i")
+        for (let i = 0; i < is.length; i++) {
+            is[i].style.transform = `rotate(${ i * 12 }deg) translate(80px)`;
+            is[i].style.animationDelay = `${ i * .05 }s`
+        }
+    </script>
+</body>
+
+</html>

@@ -49,7 +49,7 @@ module.exports = {
             }
         },
         // 启用 CSS modules for all css / pre-processor files.
-        requireModuleExtension: false
+        requireModuleExtension: true
     },
     // use thread-loader for babel & TS in production build
     // enabled by default if the machine has more than 1 cores
@@ -66,15 +66,7 @@ module.exports = {
         https: false, // 编译失败时刷新页面
         hot: true, // 开启热加载
         hotOnly: false,
-        proxy: {
-            '/devApi': {
-                target: 'http://www.web-jshtml.cn/productapi/token', //API服务器的地址
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/devApi': ''
-                }
-            }
-        }, // 设置代理
+        // proxy: false // 设置代理
         overlay: { // 全屏模式下是否显示脚本错误
             warnings: true,
             errors: true
@@ -85,15 +77,4 @@ module.exports = {
      * 第三方插件配置
      */
     pluginOptions: {}
-}
-
-// 全局导入样式
-function addStyleResource(rule) {
-    // rule.use('style-resource')
-    //     .loader('style-resources-loader')
-    //     .options({
-    //         patterns: [
-    //             path.resolve(__dirname, './src/common/stylus/index.styl')
-    //         ]
-    //     })
 }

@@ -25,9 +25,7 @@ export function loginCode(value) {
     return !reg.test(value) ? true : false
 }
 //登录
-export function login(value) {
 
-}
 // export function confirm(params) {
 //     MessageBox.confirm(params.content, params.tip || '提示', {
 //             confirmButtonText: '确定',

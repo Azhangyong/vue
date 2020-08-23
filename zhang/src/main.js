@@ -3,9 +3,8 @@ import VueCompositionApi from '@vue/composition-api'
 import router from './router'
 import store from './store/index.js'
 import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
-import 'normalize.css/normalize.css'
-import 'element-ui/lib/theme-chalk/index.css'
 import "./router/premit.js" //路由守卫
 //全局方法
 // import golbal from './utils/global.js'
