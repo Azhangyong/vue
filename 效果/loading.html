@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background-color: darkturquoise;
+        }
+
+        h3 {
+            font-size: 28px;
+            text-align: center;
+            margin-top: 100px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .main {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto
+        }
+
+        svg {
+            fill: none;
+        }
+
+        .load {
+            stroke-width: 20;
+            /**
+            虚线长度10
+            虚线间隔10
+            */
+            stroke-dasharray: 252;
+            stroke-dashoffset: 0;
+            animation: load 1.5s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        .one {
+            stroke: red;
+        }
+
+        .two {
+            stroke: yellow;
+            animation-delay: .1s;
+        }
+
+        .three {
+            stroke: lightskyblue;
+            animation-delay: .2s;
+        }
+
+        @keyframes load {
+            0% {
+                stroke-dashoffset: 252
+            }
+
+            50% {
+                stroke-dashoffset: 230
+            }
+
+            100% {
+                stroke-dashoffset: 252;
+                transform: rotate(360deg)
+            }
+        }
+
+        .point1 {
+            fill: red;
+        }
+
+        .point2 {
+            fill: yellow;
+            animation-delay: .2s !important;
+        }
+
+        .point3 {
+            fill: lightskyblue;
+            animation-delay: .4s !important;
+        }
+
+        .point {
+            animation: buncle 1s ease-in-out infinite
+        }
+
+        @keyframes buncle {
+            0% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+
+            100% {
+                transform: translateY(10px)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h3>loading</h3>
+    <div class="main">
+        <svg viewBox="0 0 120 120">
+            <circle class="load one" cx="60" cy="60" r="40"></circle>
+            <circle class="load two" cx="60" cy="60" r="40"></circle>
+            <circle class="load three" cx="60" cy="60" r="40"></circle>
+            <circle class="point point1" cx="45" cy="60" r="5"></circle>
+            <circle class="point point2" cx="60" cy="60" r="5"></circle>
+            <circle class="point point3" cx="75" cy="60" r="5"></circle>
+        </svg>
+    </div>
+</body>
+
+</html>
