@@ -22,7 +22,7 @@ export default {
       type: String, //类型
       // default: '', //如果没值 默认值
       //default:()=>[] 对象或数组
-      required: true //必填
+      required: true //必填默认值为false
       // validator: value => {
       //   //验证数据 可以在内部做操作
       //   console.log(value)
