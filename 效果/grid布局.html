@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 600px;
+            height: 600px;
+            border: 1px solid red;
+            /**
+            设置网格布局
+            grid:块级的网格布局
+            inline-grid:行内的网格布局
+            */
+            display: grid;
+            /* display: inline-grid; 和行盒并列*/
+            /* 网格 设置 
+            有几个值就代表有几列/行
+            grid-template-columns 列的宽度
+            grid-template-rows 行的高度
+            值：
+            百分比  -- 20%
+            1fr  --fr 为当前盒子的比例 1fr 2fr 1fr 全盒子为4份
+            auto 会自动填满剩下的空间
+            repeat 函数：第一个值为 重复的次数 第二个值为宽度
+             grid-template-columns: repeat(3,200px);
+             grid-template-columns: repeat(3,100px 50px);
+             */
+            grid-template-columns: 200px 200px 200px;
+            grid-template-rows: 200px 200px 200px;
+
+            /* grid-column-gap: 30px;
+              grid-row-gap: 30px;
+            每一列/行 中间的空隙 溢出会隐藏
+             */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 容器 -->
+    <div class="main">
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+
+</html>

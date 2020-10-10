@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .xuanfu {
+            width: 120px;
+            height: 120px;
+            border-radius: 25px;
+            background: #222a37;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            /* transition: all .3s ease; */
+        }
+
+        .ball {
+            width: 90px;
+            height: 90px;
+            background: #505662;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ball::before {
+            position: absolute;
+            content: "";
+            width: 76px;
+            height: 76px;
+            border: 2px solid #363d45;
+            background: #92959e;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .ball::after {
+            position: absolute;
+            content: "";
+            width: 60px;
+            height: 60px;
+            border: 2px solid #686870;
+            background: #fff;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .touming {
+            opacity: .3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="xuanfu">
+        <div class="ball"></div>
+    </div>
+    <script>
+        let xuanfu = $(".xuanfu")
+        xuanfu.addEventListener("touchstart", function (e) {//绑定事件
+            //移除过渡
+            this.style.transition = "none"
+            //不透明
+            this.classList.remove("touming")
+            clearTimeout(this.timer)
+            //获取当前元素距离左侧的偏移
+            this.l = this.offsetLeft
+            //获取触摸开开始时 触摸点距离左侧的偏移
+            this.x = e.targetTouches[0].clientX
+            //获取当前元素距离顶部的偏移
+            this.t = this.offsetTop
+            //获取触摸开开始时 触摸点距离顶部侧的偏移
+            this.y = e.targetTouches[0].clientY
+        })
+        xuanfu.addEventListener("touchmove", function (e) {
+            //获取触摸移动后，触摸点距离左侧的偏移
+            this._x = e.targetTouches[0].clientX
+            //计算最终的left
+            let newLeft = this._x - (this.x - this.l)
+            //限制位置
+            if (newLeft <= 0) newLeft = 0
+            if (newLeft >= document.documentElement.clientWidth - this.offsetWidth) {
+                newLeft = document.documentElement.clientWidth - this.offsetWidth
+            }
+            //获取触摸移动后，触摸点距离顶部的偏移
+            this._y = e.targetTouches[0].clientY
+            //计算最终的top
+            let newTop = this._y - (this.y - this.t)
+            //限制位置
+            if (newTop <= 0) newTop = 0
+            if (newTop >= document.documentElement.clientHeight - this.offsetHeight) {
+                newTop = document.documentElement.clientHeight - this.offsetHeight
+            }
+            //设置样式
+            this.style.left = newLeft + 'px'
+            this.style.top = newTop + 'px'
+        })
+        xuanfu.addEventListener("touchend", function (e) {
+            //增加过渡效果
+            this.style.transition = "all .3s ease"
+            //吸附效果
+            //计算居中状态下left值
+            let middle = (document.documentElement.clientWidth - this.offsetWidth) / 2
+            //计算
+            let left = this.offsetLeft
+            //声明一个变量存放最终的left值
+            let newLeft;
+            if (left <= middle) {
+                newLeft = 0
+            } else {
+                newLeft = document.documentElement.clientWidth - this.offsetWidth
+            }
+            this.style.left = newLeft + 'px'
+            //启动定时器
+            this.timer = setTimeout(() => {
+                this.classList.add("touming")
+            }, 1000)
+        })
+        function $(latel) {//获取元素对象
+            return document.querySelector(latel)
+        }
+    </script>
+</body>
+
+</html>
