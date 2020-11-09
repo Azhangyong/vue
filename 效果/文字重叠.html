@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+
+        }
+
+        .item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 66px;
+            font-style: italic;
+            color: white;
+            transform: translateX(-100%);
+        }
+
+        .item p {
+            transform: translateX(-190%);
+        }
+
+        .yellow {
+            background: rgb(156, 156, 71);
+            animation: bg .3s linear forwards;
+        }
+
+        .yellow p {
+            /* 贝塞尔曲线动画 */
+            animation: text 3s .3s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        .blue {
+            background: rgb(71, 80, 156);
+            /* 切片 */
+            clip: rect(0, 1100px, 100vh, 0);
+            animation: bg 2.4s .6s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        .blue p {
+            /* 贝塞尔曲线动画 */
+            animation: text 2.4s .6s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        .green {
+            background: lightblue;
+            clip: rect(0, 900px, 100vh, 0);
+            animation: bg 2.1s .9s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        .green p {
+            /* 贝塞尔曲线动画 */
+            animation: text 2.1s .9s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        .pink {
+            background: lightgreen;
+            clip: rect(0, 700px, 100vh, 0);
+            animation: bg 1.8s 1.2s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        .pink p {
+            /* 贝塞尔曲线动画 */
+            animation: text 1.8s 1.2s cubic-bezier(0, .49, 0, 1) forwards;
+        }
+
+        @keyframes bg {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes text {
+            from {
+                transform: translateX(-190%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item yellow">
+            <p>大家好<br>我是你爸</p>
+        </div>
+        <div class="item blue">
+            <p>大家好<br>我是你爸</p>
+        </div>
+        <div class="item green">
+            <p>大家好<br>我是你爸</p>
+        </div>
+        <div class="item pink">
+            <p>大家好<br>我是你爸</p>
+        </div>
+    </div>
+</body>
+
+</html>

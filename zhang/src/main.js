@@ -15,6 +15,7 @@ Vue.use(ElementUI);
 Vue.use(VueCompositionApi);
 Vue.config.productionTip = false;
 
+
 //runtime(运行模式)
 new Vue({
   router,

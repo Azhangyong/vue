@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-family: "微软雅黑";
+            list-style-type: none;
+        }
+
+        #dlunbo {
+            width: 520px;
+            height: 280px;
+            position: absolute;
+            top: 50%;
+            margin-top: -140px;
+            left: 100px;
+            overflow: hidden;
+            /*超出部分隐藏*/
+        }
+
+        #tabs {
+            position: absolute;
+            bottom: 10px;
+            left: 200px;
+        }
+
+        #tabs li {
+            width: 20px;
+            height: 20px;
+            border: solid 1px #fff;
+            float: left;
+            margin-right: 5px;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+
+        .btn {
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            top: 50%;
+            margin-top: -25px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .ig {
+            float: left;
+        }
+
+        #igs {
+            width: 3500px;
+            height: 280px;
+            position: absolute;
+        }
+
+        .btn1 {
+            left: 0px;
+        }
+
+        .btn2 {
+            right: 0px;
+        }
+
+        #tabs .bg {
+            background-color: #ff0000;
+        }
+
+        img {
+            width: 520px;
+            height: 280px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dlunbo">
+        <div id="igs">
+            <div class="ig"><img src="./css33D旋转图/img/01.png" /></div>
+            <div class="ig"><img src="./css33D旋转图/img/02.png" /></div>
+            <div class="ig"><img src="./css33D旋转图/img/03.png" /></div>
+            <div class="ig"><img src="./css33D旋转图/img/04.png" /></div>
+            <div class="ig"><img src="./css33D旋转图/img/05.png" /></div>
+            <div class="ig"><img src="./css33D旋转图/img/01.png" /></div>
+            <!--无缝需要再放一个1-->
+        </div>
+        <ul id="tabs">
+            <li class="bg"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="btn btn1">&lt;</div>
+
+        <div class="btn btn2">&gt;</div>
+    </div>
+</body>
+<script src="./jquery-3.5.1.min.js"></script>
+<script>
+    /// <reference path="jquery-1.10.2.min.js" />
+    var i = 0;
+    var timer;
+    $(function () {
+        $("#dlunbo").hover(function () {
+            $(".btn").show();
+        }, function () {
+            $(".btn").hide();
+        });
+        timer = setInterval(function () {
+            i++;
+            Move();
+        }, 4000);
+        $("#tabs li").hover(function () {
+            clearInterval(timer);
+            i = $(this).index();//放上去当前的index
+            Move();
+        }, function () {
+            StartLunbo();
+        });
+        $(".btn1").click(function () {
+            clearInterval(timer);
+            i--;
+            if (i == -1) {
+                $("#igs").css("left", -520 * 5);//无缝连接需要css过渡,实际看不出来
+                i = 4;
+            }
+            Move();
+            StartLunbo();
+        });
+        $(".btn2").click(function () {
+            clearInterval(timer);
+            i++;
+            Move();
+            StartLunbo();
+        });
+    });
+
+    function Move() {
+        if (i < 5) {
+            $("#igs").stop(true, true).animate({ "left": -520 * i }, 400);
+        }
+        else {
+            $("#igs").stop(true, true).animate({ "left": -520 * i }, 400, function () {
+                $("#igs").css("left", "0px");//很快
+            });
+            i = 0;
+        }
+        $("#tabs li").eq(i).addClass("bg").siblings().removeClass("bg");//点
+    }
+    function StartLunbo() {
+        timer = setInterval(function () {
+            i++;
+            Move();
+        }, 4000);
+    }
+</script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            /* 设置根目录新属性值为0 */
+            --percentage: 0%
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            background: #000;
+            height: 300vh;
+        }
+
+        .sticky {
+            /* posttion粘性布局 */
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: Helvetica;
+            margin: 0;
+            padding: 0;
+            font-size: 48px;
+            color: #fff;
+            letter-spacing: -0.3px;
+            /* 关键 */
+            /* 渐变色 白色到黑色 */
+            background-image: linear-gradient(70deg,
+                    rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1)33.33%,
+                    rgba(255, 255, 255, 0) 66.67%, rgba(255, 255, 255, 0)100%);
+            background-size: 300% 100%;
+            /* var函数调用css属性 */
+            background-position-x: calc(100% - var(--percentage));
+            /* 规定绘制的区域为text */
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* 字体为透明 显示的是绘制的背景 */
+            color: transparent;
+            /* transition: 2s background-position-x ease-in-out; */
+        }
+
+        /* h1:hover {
+            background-position-x: 0%;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <div class="sticky">
+        <h1>LESS BEAEL. MORE SCREEN</h1>
+    </div>
+    <script>
+        const h1 = document.querySelector('h1')
+        document.addEventListener('scroll', (e) => {//滚动高度/屏幕高度/可视高度
+            let scrolled = document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
+            h1.style.setProperty('--percentage', `${scrolled * 100}%`)//设置新的css属性
+        })
+    </script>
+</body>
+
+</html>

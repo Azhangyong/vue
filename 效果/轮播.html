@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll-behavior让你的页面导航更加丝滑</title>
+    <style>
+        div#app {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: center;
+            align-items: center;
+            align-self: center;
+            justify-content: center;
+            border: 1px solid #ccc
+        }
+
+        nav a {
+            display: inline-block;
+            flex: 1;
+            font-size: 18px;
+            text-align: center
+        }
+
+        section.scroll-container {
+            display: block;
+            width: 100%;
+            height: 400px;
+            overflow-y: hidden;
+            scroll-behavior: smooth
+        }
+
+        div.scroll-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 20px;
+            color: #fff
+        }
+
+        div#page-1 {
+            background: saddlebrown;
+        }
+
+        div#page-2 {
+            background: salmon;
+        }
+
+        div#page-3 {
+            background: seagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <a href="#page-1">page-1</a>
+            <a href="#page-2">page-2</a>
+            <a href="#page-3">page-3</a>
+        </nav>
+        <section class="scroll-container">
+            <div class="scroll-page" id="page-1">1</div>
+            <div class="scroll-page" id="page-2">2</div>
+            <div class="scroll-page" id="page-3">3</div>
+        </section>
+    </div>
+</body>
+
+</html>
