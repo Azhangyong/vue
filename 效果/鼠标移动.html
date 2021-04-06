@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            cursor: pointer;
+            background: skyblue;
+        }
+
+        .content p {
+            width: 700px;
+            line-height: 26px;
+            font-size: 18px;
+            text-align: justify;
+        }
+
+        .cursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #f5f5f5;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            /* transition: .1s; */
+        }
+
+        .cursor2 {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #c6c6c6;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            /* transition: 2s; */
+        }
+
+        .content:hover~.cursor {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: .5;
+        }
+        .content:hover~.cursor2 {
+
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Cursor Follow on MouseMove</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste facere pariatur minima quisquam eaque velit
+            tempore quidem cumque architecto natus nemo dignissimos beatae, accusantium deserunt exercitationem commodi,
+            repellendus, quia ex!</p>
+    </div>
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
+    <script>
+        let cursor = document.querySelector(".cursor");
+        let cursor2 = document.querySelector(".cursor2");
+        document.addEventListener("mousemove", function (e) {
+            cursor.style.cssText = cursor2.style.cssText = "left:" + e.clientX + "px;top:" + e.clientY + "px"
+        })
+    </script>
+</body>
+
+</html>

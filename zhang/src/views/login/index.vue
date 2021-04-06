@@ -38,7 +38,7 @@ import {
 import { stripscript, loginPass } from '@/api/login'
 import { requestData } from '@/utils/common'
 import md5 from 'js-md5'
-export default {
+export default { 
   name: 'login',
   setup (props, context) {
     const login = reactive([

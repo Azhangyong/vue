@@ -1,13 +1,4 @@
 import { MessageBox } from 'element-ui'
-import {
-    reactive,
-    ref,
-    isRef,
-    toRefs,
-    onBeforeMount,
-    onMounted,
-    computed
-} from '@vue/composition-api'
 
 export function global() {
     const confirm = (params) => {

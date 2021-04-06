@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background: rgb(29, 0, 37);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .containter {
+
+            background: black;
+            border-radius: 50%;
+            /* 倒影 1px为偏移量 */
+            -webkit-box-reflect: below 1px linear-gradient(to bottom, transparent, #0005);
+            background: linear-gradient();
+        }
+
+        .containter .loading {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            animation: animate 2s linear infinite;
+        }
+
+        .containter .loading::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(0, transparent, mediumaquamarine);
+            background-size: 100px 200px;
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
+
+        .containter .loading::after {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: mediumaquamarine;
+            box-shadow: 0 0 20px mediumaquamarine, 0 0 40px mediumaquamarine, 0 0 40px mediumaquamarine;
+
+        }
+
+        .containter .loading span {
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            background-color: rgb(29, 0, 37);
+            border-radius: 50%;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containter">
+        <div class="loading">
+            <span></span>
+        </div>
+    </div>
+</body>
+
+</html>

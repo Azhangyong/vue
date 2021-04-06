@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #191919;
+        }
+
+        .porgress {
+            width: 100%;
+            max-width: 260px;
+            height: 6px;
+            background: #e1e4e8;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .porgress_bar {
+            display: flex;
+            height: 100%;
+            background: linear-gradient(90deg, #ffd33d,
+                    #ea4aaa 10%,
+                    #b34bff 30%,
+                    #01feff 51%,
+                    #ffb33d 68%,
+                    #ea4aaa 85%,
+                    #b34bff);
+            background-size: 300% 100%;
+            animation: porgress_bar 3s infinite;
+        }
+
+        @keyframes porgress_bar {
+            0% {
+                background-position: 100%;
+            }
+
+            100% {
+                background-position: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="porgress">
+        <span class="porgress_bar" style="width: 50%;"></span>
+    </div>
+</body>
+
+</html>

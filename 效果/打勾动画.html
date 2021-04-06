@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle {
+            stroke-dasharray: 1194;
+            stroke-dashoffset: 1194;
+
+        }
+
+        .tick {
+            stroke-dasharray: 350;
+            stroke-dashoffset: 350;
+        }
+
+        @keyframes circle {
+            from {
+                stroke-dashoffset: 1194;
+            }
+
+            to {
+                stroke-dashoffset: 2388;
+            }
+        }
+
+        @keyframes tick {
+            from {
+                stroke-dashoffset: 350;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        input[type="checkbox"]:checked+svg .circle {
+            animation: circle 1s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        input[type="checkbox"]:checked+svg .tick {
+            animation: tick .8s .8s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox">
+    <!-- <svg t="1605151601183" class="icon" viewBox="0 0 1397 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="5299" xmlns:xlink="http://www.w3.org/1999/xlink" width="272.8515625" height="200">
+        <defs>
+            <style type="text/css"></style>
+        </defs>
+        <path
+            d="M1396.363636 121.018182c0 0-223.418182 74.472727-484.072727 372.363636-242.036364 269.963636-297.890909 381.672727-390.981818 530.618182C512 1014.690909 372.363636 744.727273 0 549.236364l195.490909-186.181818c0 0 176.872727 121.018182 297.890909 344.436364 0 0 307.2-474.763636 902.981818-707.490909L1396.363636 121.018182 1396.363636 121.018182zM1396.363636 121.018182"
+            p-id="5300" fill="#1296db"></path>
+    </svg> -->
+    <svg width="400" height="400">
+        <!-- fill填充颜色,stroke边框线颜色,stroke-width显得宽度,cx/cy圆形的中心点,r为半径,stroke-linecap线末端的属性颜色,stroke-linejoin交接点样式 -->
+        <circle class="circle" fill="none" stroke="#68E534" stroke-width="20" cx="200" cy="200" r="190"
+            stroke-linecap="round" transform="rotate(-90 200 200)" />
+        <!-- points多边形节点的坐标 -->
+        <polyline class="tick" fill="none" stroke="#68E534" stroke-width="24" points="88,214 173,284 304,138"
+            stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</body>
+<script>
+    // fill - 设置填充样式
+    // fill - opacity - 设置填充透明度
+    // stroke - 设置描边样式
+    // stroke - width - 设置边框的宽度
+
+    // 矩形元素 - <rect>元素
+    // <rect x="" y="" width="" height="" rx="" ry="" />
+    // x和y - 绘制矩形的左上角坐标值
+    // width和height - 设置绘制矩形的宽度和高度
+    // rx和xy - 设置圆角矩形
+
+    // 圆形元素 - <circle>元素
+    // <circle cx="" cy="" r="" />
+    // cx和cy - 绘制圆形的圆心坐标值
+    // cx和cy不设置值的话,默认为(0,0)
+
+    // 椭圆元素- <ellipse>元素
+    // <ellipse cx="" cy="" rx="" ry="" />
+    // cx和cy - 绘制椭圆的圆心坐标值
+    // rx - 绘制椭圆的水平方向的半径
+    // ry - 绘制椭圆的垂直方向的半径
+    // 注意：当rx和ry的值相同时,绘制的是圆形
+
+    // 线条元素- <line>元素
+    // <line x1="" y1="" x2="" y2="" />
+    // x1和y1 - 绘制直线的起点坐标值
+    // x2和y2 - 绘制直线的终点坐标值
+    // 注意：绘制直线时,默认描边颜色为白色
+
+    // 折线元素 - <ployline>元素
+    // <polyline points="" />
+    // points - 折线的所有点坐标值,都设置在该属性中
+    // 注意：描边颜色默认为白色,填充颜色默认为黑色
+
+    // 多边形元素- <polygon>元素
+    // <polygon points="" />
+    // points - 折线的所有点坐标值,都设置在该属性中
+    // 注意： SVG绘制图形使用元素
+    // 单标签 - 增加结束符"/"
+
+    // 特效元素
+    // 线性渐变 - 基准线
+    // <defs>
+    // <linearGradient id="grad" x1="基准线的起点坐标值x" y1="基准线的起点坐标值y" x2="基准线的终点坐标值x" y2="基准线的终点坐标值y">
+    // <stop offset="0%~100%" stop-color="颜色" />
+    // </linearGradient>
+    // </defs>
+    // <rect fill="url(#渐变元素的id)">
+    // 射线渐变 - 基准圆
+
+    // <defs>
+    // <radialGradient id="grad" fx="设置起点基准圆的圆心x" fy="设置起点基准圆的圆心y" cx="设置终点基准圆的圆心x" cy="设置终点基准圆的圆心y" r="设置终点基准圆的半径">
+    // <stop offset="0%~100%" stop-color="颜色" />
+    // </radialGradient>
+    // </defs>
+    // <rect fill="url(#渐变元素的id)">
+    // 注意：线性渐变或射线渐变,设置基准线(圆)的坐标值必须是百分值，允许为负值，允许为大于 100% 的值
+    // 设置渐变颜色位置必须是百分值
+    // 只能是从 0% ~ 100%
+    // 滤镜元素 - 高斯模糊
+    // 滤镜元素 - <filter>元素
+    // 高斯模糊 - <feGaussianBlur>元素
+</script>
+
+</html>
